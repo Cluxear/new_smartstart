@@ -1,0 +1,188 @@
+{% extends ":default:PageAdmin.html.twig" %}
+{% block adminName %}
+    <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        <img src="{{ asset('asseets/images/admin1.png') }}" alt=""/>
+        {{ name }}
+        <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+        <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+        <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+        <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> Log Out</a></li>
+    </ul>
+{% endblock %}
+{% block content %}
+
+    <link href="{{ asset('asseets/css/modalSupprimer.css')}}" rel="stylesheet">
+
+
+    <!-- page heading start-->
+    <div class="page-heading">
+        <h3>
+            Gestion des reclamations
+        </h3>
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">Gestion des reclamations</a>
+            </li>
+            <li class="active"> Table des reclamations</li>
+        </ul>
+    </div>
+    <!-- page heading end-->
+
+    <!--table start-->
+    <div class="wrapper">
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        Table des reclamations
+
+
+
+                        <span class="tools pull-right">
+                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                <a href="javascript:;" class="fa fa-times"></a>
+             </span>
+                    </header>
+                    <div class="panel-body">
+                        <div class="adv-table">
+                            <table class="display table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Sujet</th>
+                                    <th>Description</th>
+                                    <th>Date</th>
+                                    <th>Nom du produit</th>
+                                    <th>Actions</th>
+
+
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                {% for r in reclamations %}
+
+                                    <tr>
+                                        <td> {{ r.getSujet }}</a></td>
+                                        <td>{{ r.getreponse }}</td>
+                                        <td>{{ r.getDatereponse|date('Y-m-d ') }}</td>
+
+
+                                        <td>{{ r.idtraite.idreclamation.produit.nom }}
+                                        </td>
+
+
+                                        <td>
+                                            <!-- Button trigger modal -->
+
+                                            <a  type="button" class="btn btn-success"  href="{{ path('traite_detail',{idtraite:r.id}) }}" >
+                                                details
+                                            </a>
+
+                                            </td>
+                                            {#<button type="button" class="btn btn-default"><a href="{{ path('reclamation_detail',{id:r.idreclamation}) }}">Details</a></button>#}
+
+
+
+
+
+                                            <div id="modal-danger" tabindex="-1" class="modal modal-message modal-danger fade" style="display: none;" aria-hidden="true">
+                                                <div class="modal-dialog"  role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <i class="glyphicon glyphicon-fire"></i>
+                                                        </div>
+                                                        <div class="modal-title">Alert</div>
+                                                        <div class="modal-body">
+                                                            Voulez vous vraiment supprimer cette reclamation
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            {#<a href="{{ path('reclamation_delete',{idreclamation:r.idreclamation}) }}" class="btn btn-primary btn-sm">Supprimer</a>#}
+
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">annuler</button>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                    </tr>
+
+
+                                    </td>
+                                    </tr>
+
+
+
+
+                                {% endfor %}
+                                </tbody>
+
+                                <tfoot>
+                                <tr>
+
+                                </tr>
+                                </tfoot>
+                            </table>
+
+                        </div>
+                    </div>
+
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- table end-->
+
+
+
+    <!--<script type="text/javascript">
+
+    $("button#bt").click(
+        function () {
+
+            alert($(this).data("id"));
+
+        }
+    );
+
+    function validation(e){
+        var id = $(e).data("id");
+
+        swal({
+                title: "Etes vous sur?",
+                text: "Il  ne sera pas possible de revenir en arriére!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Oui,supprimer!",
+                closeOnConfirm: false
+            },
+            function(e){
+
+                var id = $(e).data("id")
+
+                var path = "{{ path('reclamation_delete',{idreclamation:14}) }}";
+                $.ajax({
+                    type: 'POST',
+                    url: path,
+                    success: swal("Supprimé!", "La reclamation a été supprimé avec succes.", "success")
+                });
+
+            });
+    }
+
+</script>
+-->
+
+
+
+
+
+{% endblock %}

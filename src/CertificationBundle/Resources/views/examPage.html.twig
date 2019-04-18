@@ -1,0 +1,41 @@
+{% extends ('base.html.twig') %}
+{% block content %}
+    {{ form_start(form) }}
+    {% for question in questions %}
+            <div class="form-group">
+                <label for="formGroupExampleInput"><strong>{{ question }}</strong></label>
+                {{ form_widget(form.submition[loop.index-1]) }}
+            </div>
+    {% endfor %}
+
+    <div class="text-center">
+
+        {{ form_widget(form.save) }}
+    </div>
+    <div id="startValuesAndTargetExample">
+        <div class="values"></div>
+        <div class="progress_bar">.</div>
+    </div>
+    {{ form_end(form) }}
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-migrate-3.0.0.min.js') }}"></script>
+    <script>
+
+
+        $(document).ready(function(){
+
+            var timer = new easytimer.Timer();
+            timer.start({countdown: true, precision: 'seconds', startValues: {seconds: 10}, target: {seconds: 0}});
+            $('#startValuesAndTargetExample .values').html(timer.getTimeValues().toString());
+            timer.addEventListener('secondsUpdated', function (e) {
+                $('#startValuesAndTargetExample .values').html(timer.getTimeValues().toString());
+                $('#startValuesAndTargetExample .progress_bar').html($('#startValuesAndTargetExample .progress_bar').html() + '.');
+            });
+            timer.addEventListener('targetAchieved', function (e) {
+                $('#startValuesAndTargetExample .progress_bar').html('COMPLETE!!');
+                $('#form_save').attr("disabled",true);
+            });
+
+        })
+    </script>
+{% endblock %}

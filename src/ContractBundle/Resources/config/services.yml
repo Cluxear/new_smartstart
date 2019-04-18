@@ -1,0 +1,8 @@
+services:
+    ContractBundle\Stripe\StripeClient:
+        autowire: true
+        autoconfigure: true
+        lazy: true
+
+    my.stripe.client:
+        alias: ContractBundle\Stripe\StripeClient

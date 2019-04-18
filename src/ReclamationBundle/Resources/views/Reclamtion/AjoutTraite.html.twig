@@ -1,0 +1,70 @@
+{% extends ":default:PageAdmin.html.twig" %}
+{% block adminName %}
+    <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        <img src="{{ asset('asseets/images/admin1.png') }}" alt=""/>
+        {{ name }}
+        <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+        <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+        <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+        <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> Log Out</a></li>
+    </ul>
+{% endblock %}
+{% block content %}
+    <body>
+    <div id="all">
+
+        <div id="content">
+            <div class="container">
+
+                <div class="col-md-12">
+
+                    <ul class="breadcrumb">
+                        <li><a href="index.html">Home</a>
+                        </li>
+                        <li>Répondre à la reclamation de  </li>
+                    </ul>
+
+                </div>
+
+
+                <div class="col-md-12" >
+
+
+                    <div class="well col-md-10">
+                        <h1>Répondre à la reclamation de <a href="#"></a>  </h1>
+                        <p class="lead">Pellentesque habitant morbi tristique senectus et netus et malesuada fames
+                            ac turpis egestas.</p>
+
+
+                        <div >
+                            {{ form_start(form) }}
+                            Sujet: {{ form_widget(form.sujet, { 'attr': {'class': 'form-control'} }) }}
+                            Réponse: {{ form_widget(form.traite, { 'attr': {'class': 'form-control '} }) }}
+
+                            <br>
+
+                            <input type="submit" value="Envoyer" class="btn btn-success"/>
+
+                        </div>
+                        {{ form_end(form) }}
+
+                    </div>
+
+
+                    <!-- /.products -->
+
+                </div>
+            </div>
+            <!-- /.container -->
+        </div>
+    </div>
+
+    <br>
+    <br>
+    </body>
+
+
+
+{% endblock %}

@@ -1,0 +1,30 @@
+reclamation:
+    resource: "@ReclamationBundle/Resources/config/routing.yml"
+    prefix:   /
+contracts:
+    resource: "@ContractBundle/Resources/config/routing.yml"
+    prefix:   /
+
+certification:
+    resource: "@CertificationBundle/Controller/"
+    type:     annotation
+    prefix:   /
+posts:
+    resource: "@PostsBundle/Resources/config/routing.yml"
+    prefix: /
+post:
+    resource: "@PostBundle/Controller/"
+    prefix: /
+user:
+    resource: "@UserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+mgilet_notification:
+    resource: "@MgiletNotificationBundle/Controller/"
+    prefix: /notifications

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+  {% block content %}
+<div class="col-md-9">
+    <div class="box">
+        <h3> Votre liste de reclamations</h3>
+        <table class="display table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Sujet</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Nom du produit</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for r in reclamations %}
+            {% if r.getStatusreclamation =="Archiver" %}
+                <tr>
+                    <td> <a href="{{ path('reclamation_detail_user',{id:r.idreclamation}) }}">{{ r.getSujetreclamation }}</td>
+                    <td>{{ r.getDescriptionreclamation }}</td>
+                    <td>{{ r.getDatereclamation|date('Y-m-d ') }}</td>
+                    <td>
+                        {% if r.getStatusreclamation =="Traitée" %}
+                        <span class="label label-success">
+                                            {% endif %}
+                            {% if r.getStatusreclamation =="En cours" %}
+                            <span class="label label-warning">
+                                            {% endif %}
+
+                    <td> {{ r.getStatusreclamation }}</span></td>
+                    <td>{{ r.getproduit.getNom }} </td>
+
+                </tr>
+
+
+
+
+            {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+</div>
+{% endblock %}

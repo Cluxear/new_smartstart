@@ -1,0 +1,142 @@
+
+{% extends "@FOSUser/layout.html.twig" %}
+{% block header %}
+
+    <!-- Sign-in Popup -->
+    <div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide dialog-with-tabs">
+
+        <!--Tabs -->
+        <div class="sign-in-form">
+
+            <ul class="popup-tabs-nav">
+                <li><a href="#login">Log In</a></li>
+                <li><a href="/register">Register</a></li>
+            </ul>
+
+            <div class="popup-tabs-container">
+
+                <!-- Login -->
+                <div class="popup-tab-content" id="login">
+
+                    <!-- Welcome Text -->
+                    <div class="welcome-text">
+                        <h3>We're glad to see you again!</h3>
+                        <span>Don't have an account? <a href="#" class="register-tab">Sign Up!</a></span>
+                    </div>
+
+                    <!-- Form -->
+                    {% block fos_user_content %}
+                        {% trans_default_domain 'FOSUserBundle' %}
+
+                        {% if error %}
+                            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+
+                        <form action="{{ path("fos_user_security_check") }}" method="post">
+                            {% if csrf_token %}
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                            {% endif %}
+
+                                <label for="username">{{ 'security.login.username'|trans }}</label>
+                                <div class="input-with-icon-left">
+                                <i class="icon-material-baseline-mail-outline"></i>
+                                <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+                            </div>
+
+                            <label for="password">{{ 'security.login.password'|trans }}</label>
+                            <div class="input-with-icon-left">
+                                <i class="icon-material-outline-lock"></i>
+                            <input type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+                                </div>
+
+                            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                            <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+
+                            <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                        </form>
+                    {% endblock fos_user_content %}
+                    <!-- Social Login -->
+                    <div class="social-login-separator"><span>or</span></div>
+                    <div class="social-login-buttons">
+                        <button class="facebook-login ripple-effect"><i class="icon-brand-facebook-f"></i> Log In via Facebook</button>
+                        <button class="google-login ripple-effect"><i class="icon-brand-google-plus-g"></i> Log In via Google+</button>
+                    </div>
+
+                </div>
+
+                <!-- Register -->
+                <div class="popup-tab-content" id="register">
+
+                    <!-- Welcome Text -->
+                    <div class="welcome-text">
+                        <h3>Let's create your account!</h3>
+                    </div>
+
+
+                    <!-- Form -->
+
+
+                    <div class="row">
+                        <div class="col-xl-5 offset-xl-3">
+
+                            <div class="login-register-page">
+                                <!-- Account Type -->
+                                <div class="account-type">
+                                    <div>
+                                        <input type="radio" name="account-type-radio" id="freelancer-radio" class="account-type-radio" checked/>
+                                        <label for="freelancer-radio" class="ripple-effect-dark"><i class="icon-material-outline-account-circle"></i> Freelancer</label>
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" name="account-type-radio" id="employer-radio" class="account-type-radio"/>
+                                        <label for="employer-radio" class="ripple-effect-dark"><i class="icon-material-outline-business-center"></i> Employer</label>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Social Login -->
+                    <div class="social-login-separator"><span>or</span></div>
+                    <div class="social-login-buttons">
+                        <button class="facebook-login ripple-effect"><i class="icon-brand-facebook-f"></i> Register via Facebook</button>
+                        <button class="google-login ripple-effect"><i class="icon-brand-google-plus-g"></i> Register via Google+</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {{ parent() }}
+{% endblock %}
+{%  block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $.magnificPopup.open({
+                items:{
+                    src: '#sign-in-dialog',
+                    type: 'inline'
+                },
+                fixedContentPos: true,
+                fixedBgPos: true,
+                overflowY: 'auto',
+                closeBtnInside: true,
+                preloader: false,
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'popup-with-zoom-anim log-in-button'
+            });
+        });
+        $("#register").click(function () {
+        })
+    </script>
+    <!-- Sign In Popup / End -->
+
+    l{% endblock %}
+

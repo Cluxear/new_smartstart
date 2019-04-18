@@ -1,0 +1,101 @@
+{%  extends 'base.html.twig' %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{%  block content %}
+
+<body>
+
+
+
+<!-- Dashboard Content
+   ================================================== -->
+<div class="dashboard-content-container" data-simplebar>
+    <div class="dashboard-content-inner" >
+
+        <!-- Dashboard Headline -->
+        <div class="dashboard-headline">
+            <h3>Update Your Demande</h3>
+
+            <!-- Breadcrumbs -->
+            <nav id="breadcrumbs" class="dark">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Dashboard</a></li>
+                    <li>Edit demande</li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Row -->
+        <div class="row">
+
+            <!-- Dashboard Box -->
+            <div class="col-xl-12">
+                <div class="dashboard-box margin-top-0">
+                    <form action="#" method="post">
+                        <!-- Headline -->
+                        <div class="headline">
+                            <h3><i class="icon-feather-folder-plus"></i> Demande Edit Form</h3>
+                        </div>
+
+                        <div class="content with-padding padding-bottom-10">
+                            <div class="row">
+
+
+                                <div class="col-xl-4">
+                                    <div class="submit-field">
+                                        <h5>Demande Price:</h5>
+                                        <input type="number" class="with-border" name="price" value="{{ d.prix }}"  required min="5">
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-xl-4">
+                                    <div class="submit-field">
+                                        <h5>Realisation date:</h5>
+                                        <input type="date" class="with-border" name="date" min="2019-04-20" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4">
+                                    <div class="submit-field">
+                                        <h5>State</h5>
+                                        <input type="text" class="with-border" name="state" value="{{ d.statut }}"  required min="1">
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+                            <div class="col-xl-12">
+                                <div class="submit-field">
+                                    <h5>Demande Description</h5>
+                                    <textarea cols="30" rows="5" class="with-border" name="description" required>{{ d.description }}</textarea>
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <center>  <div class="col-xl-12">
+                <button class="btn btn-primary"> <i class="icon-feather-plus"></i>Edit demande</button>
+            </div>
+        </center>
+        </form>
+
+    </div>
+    <!-- Row / End -->
+
+</div>
+</div>
+<!-- Dashboard Content / End -->
+
+</div>
+
+</body>
+{% endblock %}

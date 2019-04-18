@@ -1,2 +1,1 @@
-# new_smartstart
-new smartstart
+SmartStart project

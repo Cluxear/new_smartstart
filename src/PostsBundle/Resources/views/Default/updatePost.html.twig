@@ -1,0 +1,122 @@
+{%  extends 'base.html.twig' %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{%  block content %}
+
+<body>
+
+
+    <!-- Dashboard Content
+    ================================================== -->
+    <div class="dashboard-content-container" data-simplebar>
+        <div class="dashboard-content-inner" >
+
+            <!-- Dashboard Headline -->
+            <div class="dashboard-headline">
+                <h3>Update Your Post</h3>
+
+                <!-- Breadcrumbs -->
+                <nav id="breadcrumbs" class="dark">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Dashboard</a></li>
+                        <li>Post a Job</li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Row -->
+            <div class="row">
+
+                <!-- Dashboard Box -->
+                <div class="col-xl-12">
+                    <div class="dashboard-box margin-top-0">
+                        <form action="#" method="post">
+                        <!-- Headline -->
+                        <div class="headline">
+                            <h3><i class="icon-feather-folder-plus"></i> Job Submission Form</h3>
+                        </div>
+
+                        <div class="content with-padding padding-bottom-10">
+                            <div class="row">
+
+
+                                <div class="col-xl-4">
+                                    <div class="submit-field">
+                                        <h5>Job Title</h5>
+                                        <input type="text" class="with-border" name="title" value="{{ post.titrepost }}" required >
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-xl-4">
+                                    <div class="submit-field">
+                                        <h5>Job date</h5>
+                                        <input type="date" class="with-border" name="date" min="2019-04-20" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4">
+                                    <div class="submit-field">
+                                        <h5>Cout</h5>
+                                        <input type="number" class="with-border" name="cout" value="{{ post.cout }}" required min="1">
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-xl-4">
+                                    <div class="submit-field">
+                                        <h5>Deadline</h5>
+                                        <input type="number" class="with-border" name="deadline" value="{{ post.deadline }}" required min="1">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-xl-4">
+                                    <div class="submit-field">
+                                        <h5>Payment Type</h5>
+                                        <select id="pet-select" name="payement">
+                                            <option value="Paypal">Paypal</option>
+                                            <option value="Visa">Visa</option>
+                                            <option value="Master Card">Master Card</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                </div>
+
+                                <div class="col-xl-12">
+                                    <div class="submit-field">
+                                        <h5>Job Description</h5>
+                                        <textarea cols="30" rows="5" class="with-border" name="description" required>{{ post.description }}</textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+              <center>  <div class="col-xl-12">
+                   <button class="btn btn-primary"> <i class="icon-feather-plus"></i> Update The Post</button>
+                </div>
+              </center>
+            </form>
+
+            </div>
+            <!-- Row / End -->
+
+
+
+        </div>
+    </div>
+    <!-- Dashboard Content / End -->
+
+</div>
+</body>
+
+{% endblock %}

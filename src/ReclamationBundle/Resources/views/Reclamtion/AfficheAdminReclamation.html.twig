@@ -1,0 +1,162 @@
+{% extends "base.html.twig" %}
+{% block content %}
+
+
+
+
+    <!-- page heading start-->
+    <div class="page-heading">
+        <h3>
+            Gestion des reclamations
+        </h3>
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">Gestion des reclamations</a>
+            </li>
+            <li class="active"> Table des reclamations</li>
+        </ul>
+    </div>
+    <!-- page heading end-->
+
+    <!--table start-->
+    <div class="wrapper">
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        Table des reclamations
+
+
+                        <span class="tools pull-right">
+                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                <a href="javascript:;" class="fa fa-times"></a>
+             </span>
+                    </header>
+
+                    <div class="panel-body">
+                        <div class="adv-table">
+                            <div id="affichage">
+
+                            <table class="display table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Sujet</th>
+                                    <th>Description</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Utilisateur</th>
+
+
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                    {% for r in reclamations %}
+                                    {% if r.getStatusreclamation =="Archiver" %}
+                                    {% else %}
+
+                                    <tr>
+                                        <td> {{ r.getSujetreclamation }}</a></td>
+                                        <td>{{ r.getDescriptionreclamation }}</td>
+                                        <td>{{ r.getDatereclamation|date('Y-m-d ') }}</td>
+                                        <td>
+
+                                            {% if r.getStatusreclamation =="Traitée" %}
+                                            <span class="label label-success">
+                                            {% endif %}
+                                                {% if r.getStatusreclamation =="En cours" %}
+                                                <span class="label label-warning">
+                                            {% endif %}
+
+                                                    {% if r.getStatusreclamation =="En cours de traitement" %}
+                                                    <span class="label label-default">
+                                            {% endif %}
+
+
+                                                    {{ r.getStatusreclamation }}</span>
+                                            </span>
+                                            </span>
+                                        </td>
+
+                                        <td>{{ r.id_client.username }}
+                                        <td>
+                                            {% if ((r.getStatusreclamation == "En cours de traitement") or (r.getStatusreclamation == "Traitée")) %}
+
+                                            {% else %}
+                                                <button type="button" class="btn btn-primary"><a href="{{ path('reclamation_traite',{'id':r.id , 'id1':r.id_client.id}) }}">Traiter</a></button>
+
+
+                                            {% endif %}
+
+                                            {% if (r.getStatusreclamation == "Traitée") %}
+                                            {% else %}
+                                                <a href="{{ path('reponse_create',{idreclamation:r.id}) }}" class="btn btn-primary btn-sm">Répondre</a>
+
+                                            {% endif %}
+                                            <!-- Button trigger modal -->
+                                            <a    href="{{ path('reclamation_delete',{idreclamation:r.id}) }}" type="button" class="btn btn-danger" >
+                                                Archiver
+                                            </a>
+                                            <button type="button" class="btn btn-default"><a href="{{ path('reclamation_detail',{id:r.id}) }}">Details</a></button>
+
+
+
+
+
+                                            <div id="modal-danger" tabindex="-1" class="modal modal-message modal-danger fade" style="display: none;" aria-hidden="true">
+                                                <div class="modal-dialog"  role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <i class="glyphicon glyphicon-fire"></i>
+                                                        </div>
+                                                        <div class="modal-title">Alert</div>
+                                                        <div class="modal-body">
+                                                            Voulez vous vraiment Archiver cette reclamation
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="{{ path('reclamation_delete',{idreclamation:r.id}) }}" class="btn btn-primary btn-sm">Archiver</a>
+
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">annuler</button>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                    </tr>
+
+
+                                    </td>
+                                    </tr>
+
+
+
+                                {% endif %}
+                                {% endfor %}
+                                </tbody>
+
+                                <tfoot>
+                                <tr>
+
+                                </tr>
+                                </tfoot>
+                            </table>
+                            </div>
+                            <div id="div"></div>
+
+                        </div>
+                    </div>
+
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}
+

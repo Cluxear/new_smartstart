@@ -1,0 +1,78 @@
+reclamation_Affiche:
+    path:     /affiche
+    defaults: { _controller: ReclamationBundle:Reclamation:Affiche}
+
+reclamation_Reclamation:
+    path:     /reclamtion/{id}
+    defaults: { _controller: ReclamationBundle:Reclamation:Reclamation}
+reclamation_detail_user:
+    path:    /reclamation/detail/{id}
+    defaults: { _controller: ReclamationBundle:Reclamation:detailsUser}
+userdash:
+    path:    /userinfo
+    defaults: { _controller: ReclamationBundle:Reclamation:userDash }
+
+reclamation_display:
+    path:    /reclamation
+    defaults: { _controller: ReclamationBundle:Reclamation:index }
+
+reclamation_detail:
+    path:    /admin/reclamation/detail/{id}
+    defaults: { _controller: ReclamationBundle:Reclamation:details }
+
+reponse_create:
+    path:    /admin/reponsereclamation/create/{idreclamation}
+    defaults: { _controller: ReclamationBundle:Reclamation:create }
+
+reclamation_delete:
+    path:    /delete/{idreclamation}
+    defaults: {_controller: ReclamationBundle:Reclamation:delete}
+reclamation_detailsUser:
+    path:    /details/{idreclamation}
+    defaults: {_controller: ReclamationBundle:Reclamation:detailsUser}
+reclamation_traite:
+    path:   /{id}/{id1}/traite
+    defaults: {_controller: ReclamationBundle:Reclamation:Traiter}
+
+agenttrite:
+    path:    /traiteAgent
+    defaults: { _controller: ReclamationBundle:Reclamation:Traiteaffiche }
+
+Traite_affiche:
+    path:    /traiteaffiche
+    defaults: { _controller: ReclamationBundle:Reclamation:Traiteafficheadmin }
+
+reclamation_repond:
+    path:    /repondreTraite/{id}
+    defaults: { _controller: ReclamationBundle:Reclamation:Traiterepondre }
+
+detail_trait:
+    path:    /traitedetails/{id}
+    defaults: { _controller: ReclamationBundle:Reclamation:detailsAgent }
+
+produit_a_bloque:
+        path:    /produitabloque
+        defaults: { _controller: ReclamationBundle:Reclamation:produitABloquer }
+bloquer_produit:
+        path:    /bloqueproduit/{id}
+        defaults: { _controller: ReclamationBundle:Reclamation:bloquerProduit }
+
+traite_detail:
+        path:    /detailstraite/{idtraite}
+        defaults: { _controller: ReclamationBundle:Reclamation:detailsTraite }
+
+mgilet_notifications:
+    resource: "@MgiletNotificationBundle/Controller/"
+    prefix: /notifications
+
+notification_markAsUnseen:
+        path:    /reclamation/unseeNotification
+        defaults: { _controller: ReclamationBundle:Reclamation:MarkAsSeenAll }
+
+traite:
+        path:    /reclamtion/{produit}/{id}/{d}/{s}
+        defaults: { _controller: ReclamationBundle:Reclamation:Ajout}
+
+traituuuue:
+        path:    /reclamtion/affiche/
+        defaults: { _controller: ReclamationBundle:Reclamation:Affich}

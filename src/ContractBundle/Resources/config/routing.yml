@@ -1,0 +1,24 @@
+my_contracts:
+    path:     /myContracts
+    defaults: { _controller: ContractBundle:Default:index }
+ajouter_contract:
+    path: /ajoutercontract
+    defaults: { _controller: ContractBundle:Default:ajouterContract }
+delete_contract:
+    path:     /contract/delete/{id}
+    defaults: { _controller: ContractBundle:Default:delete }
+my_low_contracts:
+    path:     /myLowContracts
+    defaults: { _controller: ContractBundle:Default:low }
+update_contract:
+    path:     /contract/update/{id}
+    defaults: { _controller: ContractBundle:Default:update }
+freelancer_contracts:
+    path:     /freelancerContracts
+    defaults: { _controller: ContractBundle:Default:freelancerContracts }
+print_contract:
+    path:     /contract/print/{id}
+    defaults: { _controller: ContractBundle:Default:print }
+pay_contract:
+    path:     /contract/pay
+    defaults: { _controller: ContractBundle:Default:pay }

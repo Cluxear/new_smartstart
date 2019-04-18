@@ -1,0 +1,95 @@
+{% extends "base.html.twig" %}
+{% block content %}
+
+
+    <body>
+
+    <div id="all">
+
+        <div id="content">
+            <div class="container">
+                <div class="col-md-12">
+
+                    <ul class="breadcrumb">
+                        <li><a href="index.html">Home</a>
+                        </li>
+                        <li>Detail de la reclamation de {{ reclamation.idclient.username }} </li>
+                    </ul>
+
+                </div>
+
+
+                <div class="well col-md-10">
+
+                    <section class="comments">
+                        <article class="comment">
+                            <a class="comment-img" href="#non">
+                                <img src="{{ asset('asseets/images/boy.png') }}" alt="" width="50" height="50">
+                            </a>
+                            <div class="comment-body">
+
+
+                                <h3> Sujet : {{ reclamation.sujetreclamation }}</h3>
+
+                                <div class="text">
+                                    <p>{{ reclamation.descriptionreclamation }}</p>
+                                </div>
+                                <p class="attribution">by <a href="#non">{{ reclamation.idclient.username }}</a> at {{ reclamation.datereclamation | date }}</p>
+                            </div>
+                        </article>
+                        {% if reponse != null  %}
+
+                            <article class="comment">
+                                <a class="comment-img" href="#non">
+                                    <img src="{{ asset('asseets/images/boy.png') }}" alt="" width="50" height="50">
+                                </a>
+                                <div class="comment-body">
+
+                                    <h3> Sujet : {{ reponse.sujet }}</h3>
+                                    <div class="text">
+                                        <p>Sujet : {{ reponse.reponse }}</p>
+                                    </div>
+                                    <p class="attribution">by <a href="#non">{{ reponse.idadmin.username }}</a> </p>
+
+                                </div>
+                            </article>
+                        {% else %}
+                            <div class="container">
+                                <div class="col-sm-10" style="    padding-right: 49px;">
+                                    <div class="bs-calltoaction bs-calltoaction-warning">
+                                        <div class="row">
+                                            <div class="col-md-9 cta-contents" >
+                                                <h1 class="cta-title">Vous n'avez pas répondu a cette reclamation </h1>
+                                                <div class="cta-desc">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 cta-button">
+                                                <a href="{{ path('reponse_create',{idreclamation:reclamation.id}) }}" class="btn btn-lg btn-block btn-warning"> Répondre</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </section>
+
+
+                </div>
+
+
+
+
+
+            </div>
+            <!-- /.container -->
+        </div>
+    </div>
+
+    <br>
+    <br>
+    </body>
+
+
+
+{% endblock %}

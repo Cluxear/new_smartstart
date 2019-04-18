@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}ReclamationBundle:Reclamation:Affiche{% endblock %}
+
+{% block content %}
+    <strong>Liste des Utilisateurs</strong>
+    <table border="1"><tr><td>Id</td><td>username</td> <td> Action</td></tr>
+        {% for p in produit %}
+            <tr><td>{{ p.id }}</td><td>{{ p.username}}</td>
+                <td><a href="{{ path('reclamation_Reclamation',{'id':p.id}) }}"> Créer une reclamation</a></td>*/
+
+            </tr>
+
+        {% endfor %}
+    </table>
+{% endblock %}

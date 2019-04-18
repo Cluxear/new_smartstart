@@ -1,0 +1,174 @@
+{%  extends 'base.html.twig' %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{%  block content %}
+
+    <body>
+
+    <div class="dashboard-content-container" data-simplebar>
+        <div class="dashboard-content-inner" >
+
+            <!-- Dashboard Headline -->
+            <div class="dashboard-headline">
+                <h3>Manage Demandes</h3>
+
+                <!-- Breadcrumbs -->
+                <nav id="breadcrumbs" class="dark">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Dashboard</a></li>
+                        <li>Manage Demandes</li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Row -->
+            <div class="row">
+
+                <!-- Dashboard Box -->
+                <div class="col-xl-12">
+                    <div class="dashboard-box margin-top-0">
+                        <center>
+                        {% if app.session.flashBag.has('success') %}
+                            <div class="alert alert-success">
+                                {% for msg in app.session.flashBag.get('success') %}
+                                    {{ msg }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        </center>
+                        <!-- Headline -->
+                        <div class="headline">
+                            <h3><i class="icon-material-outline-assignment"></i>Manage Demandes</h3>
+                        </div>
+
+                        <div class="content">
+
+                            <ul class="dashboard-box-list">
+                                {% for p in posts %}
+                                <li>
+                                    <!-- Job Listing -->
+                                    <div class="job-listing width-adjustment">
+
+                                        <!-- Job Listing Details -->
+                                        <div class="job-listing-details">
+
+                                            <!-- Details -->
+                                            <div class="job-listing-description">
+                                                <h3 class="job-listing-title"><a href="#">Post:{{p.idpost.titrepost }}</a>  <span class="dashboard-status-button yellow">Expiring : {{ p.idpost.deadline }} Days</span></h3>
+
+                                                <!-- Job Listing Footer -->
+                                                <div class="job-listing-footer">
+                                                    <ul>
+                                                        <li><i class="icon-material-outline-access-time"></i>Added : {{ p.dateRealisation | date("m/d/Y")  }}</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="job-listing-footer">
+                                                    <ul>
+                                                        <li><i class="icon-brand-affiliatetheme"></i> : {{ p.description }}</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Task Details -->
+                                    <ul class="dashboard-task-info">
+
+                                        <li><strong>$ {{p.prix }}</strong><span>Demande price :</span></li>
+                                        <li><strong>$ {{ p.idpost.cout }}</strong><span>Post price:</span></li>
+                                    </ul>
+
+                                    <!-- Buttons -->
+                                    <div class="buttons-to-right always-visible">
+                                        <a href="{{ path('details_demande', { 'id': p.id }) }}" class="btn btn-success">Details Demande</a>
+                                        <a href="{{ path('update_demande', { 'id': p.id }) }}" class="btn btn-warning">Edit Demande</a>
+                                        <a href="{{ path('supprimer_demande', { 'id': p.id }) }}" class="btn btn-danger">Delete Demande</a>
+                                    </div>
+                                </li>
+
+                                {% endfor %}
+
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Row / End -->
+
+            <!-- Footer -->
+            <div class="dashboard-footer-spacer"></div>
+            <div class="small-footer margin-top-15">
+                <div class="small-footer-copyrights">
+                    © 2018 <strong>Hireo</strong>. All Rights Reserved.
+                </div>
+                <ul class="footer-social-links">
+                    <li>
+                        <a href="#" title="Facebook" data-tippy-placement="top">
+                            <i class="icon-brand-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="Twitter" data-tippy-placement="top">
+                            <i class="icon-brand-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="Google Plus" data-tippy-placement="top">
+                            <i class="icon-brand-google-plus-g"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="LinkedIn" data-tippy-placement="top">
+                            <i class="icon-brand-linkedin-in"></i>
+                        </a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <!-- Footer / End -->
+
+        </div>
+    </div>
+
+
+    <!-- Scripts
+    ================================================== -->
+    <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{asset('js/jquery-migrate-3.0.0.min.js')}}"></script>
+    <script src="{{asset('js/mmenu.min.js')}}"></script>
+    <script src="{{asset('js/tippy.all.min.js')}}"></script>
+    <script src="{{asset('js/simplebar.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap-slider.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap-select.min.js')}}"></script>
+    <script src="{{asset('js/snackbar.js')}}"></script>
+    <script src="{{asset('js/clipboard.min.js')}}"></script>
+    <script src="{{asset('js/counterup.min.js')}}"></script>
+    <script src="{{asset('js/magnific-popup.min.js')}}"></script>
+    <script src="{{asset('js/slick.min.js')}}"></script>
+    <script src="{{asset('js/custom.js')}}"></script>
+
+    <!-- Snackbar // documentation: https://www.polonel.com/snackbar/ -->
+    <script>
+        // Snackbar for user status switcher
+        $('#snackbar-user-status label').click(function() {
+            Snackbar.show({
+                text: 'Your status has been changed!',
+                pos: 'bottom-center',
+                showAction: false,
+                actionText: "Dismiss",
+                duration: 3000,
+                textColor: '#fff',
+                backgroundColor: '#383838'
+            });
+        });
+    </script>
+
+
+    </body>
+{% endblock %}
+

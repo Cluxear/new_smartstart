@@ -1,0 +1,38 @@
+posts_homepage:
+    path:     /
+    defaults: { _controller: PostsBundle:Default:index }
+details_post:
+    path:     /post/{id}
+    defaults: { _controller: PostsBundle:Default:detailspost }
+
+mes_demandes:
+    path:     /demandes
+    defaults: { _controller: PostsBundle:Default:mesdemandes }
+
+supprimer_demande:
+    path:     /supprimerd/{id}
+    defaults: { _controller: PostsBundle:Default:supprimerDemande }
+
+update_post:
+    path:     /updatePost/{id}
+    defaults: { _controller: PostsBundle:Default:updatePost }
+
+supprimer_post:
+    path:     /supprimerp/{id}
+    defaults: { _controller: PostsBundle:Default:supprimerPost }
+
+update_demande:
+    path:     /updateDemande/{id}
+    defaults: { _controller: PostsBundle:Default:updateDem }
+
+add_post:
+    path:     /addPost
+    defaults: { _controller: PostsBundle:Default:addPost }
+
+details_demande:
+    path:     /detailsdemande/{id}
+    defaults: { _controller: PostsBundle:Default:detailsdemande }
+
+evaluer:
+    path:     /evaluer/{id}
+    defaults: { _controller: PostsBundle:Default:evaluer }

@@ -1,0 +1,23 @@
+{%  extends 'base.html.twig' %}
+{% block content %}
+    {%  for test in tests %}
+
+        <div class="listings-container compact-list-layout margin-top-35">
+
+        <!-- Job Listing -->
+        <a href="{{ path('modifyTest', {id : test.id_test}) }}" class="job-listing">
+
+
+        <!-- Logo -->
+        <div class="job-listing-company-logo">
+            <img src="images/{{ test.image }}" alt="">
+        </div>
+
+        <!-- Details -->
+        <div class="job-listing-description">
+        <h3 class="job-listing-title">{{ test.titre_test }}</h3>
+    </div>
+    </a>
+        </div>
+    {% endfor %}
+{% endblock %}

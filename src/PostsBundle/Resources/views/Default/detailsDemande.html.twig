@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{ demande.idpost.titrepost }}</title>
+    <link rel="stylesheet" href="{{ asset('css/invoice.css')}}">
+</head>
+
+<body>
+
+<!-- Print Button -->
+<div class="print-button-container">
+    <a href="javascript:window.print()" class="print-button">Here you can find your demande</a>
+</div>
+
+<!-- Invoice -->
+<div id="invoice">
+
+    <!-- Header -->
+    <div class="row">
+        <div class="col-xl-6">
+            <div id="logo"><img src="{{ asset('images/logo.png')}}" alt=""></div>
+        </div>
+
+        <div class="col-xl-6">
+
+            <p id="details">
+                <strong>Order:</strong> #00124 <br>
+                <strong>Issued:</strong> 20/08/2018 <br>
+                Due 7 days from date of issue
+            </p>
+        </div>
+    </div>
+
+
+    <!-- Client & Supplier -->
+    <div class="row">
+        <div class="col-xl-12">
+            <h2>{{ demande.idpost.titrepost }}</h2>
+        </div>
+
+        <div class="col-xl-6">
+            <strong class="margin-bottom-5">Post Information</strong>
+            <p>
+                {{ demande.userid.email }}. <br>
+                21 St Andrews Lane <br>
+               {{ demande.idpost.datePost |date("m/d/Y") }} <br>
+            </p>
+        </div>
+
+        <div class="col-xl-6">
+            <strong class="margin-bottom-5">Description</strong>
+            <p>
+               {{ demande.idpost.description }} <br>
+               Deadline : {{ demande.idpost.deadline }} Days<br>
+              $ {{ demande.idpost.cout }} <br>
+            </p>
+        </div>
+    </div>
+
+    <h1>You demande</h1>
+    <!-- Invoice -->
+    <div class="row">
+        <div class="col-xl-12">
+            <table class="margin-top-20">
+                <tr>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Realisation date</th>
+                    <th>Statut</th>
+                </tr>
+
+                <tr>
+                    <td>{{ demande.description }}</td>
+                    <td> $ {{ demande.prix }}</td>
+                    <td>{{ demande.dateRealisation |date("m/d/Y")  }}</td>
+                    <td>{{ demande.statut }}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-xl-4 col-xl-offset-8">
+            <table id="totals">
+                <tr>
+                    <th>Total </th>
+                    <th><span>${{ demande.prix }}</span></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <center><a href="{{ path('mes_demandes') }}" class="btn btn-primary">Mes Demandes</a></center>
+
+
+    <!-- Footer -->
+    <div class="row">
+        <div class="col-xl-12">
+            <ul id="footer">
+                <li><span>www.example.com</span></li>
+                <li>office@example.com</li>
+                <li>(123) 123-456</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+{%  extends('base.html.twig') %}
+{% block content %}
+    <div class="dashboard-content-container" data-simplebar>
+        <div class="dashboard-content-inner" >
+
+            <!-- Dashboard Headline -->
+            <div class="dashboard-headline">
+                <h3>Correct A Test</h3>
+
+                <!-- Breadcrumbs -->
+                <nav id="breadcrumbs" class="dark">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Dashboard</a></li>
+                        <li>Correct A Test</li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Row -->
+            <div class="row">
+
+                <!-- Dashboard Box -->
+                <div class="col-xl-12">
+                    <div class="dashboard-box margin-top-0">
+
+                        <!-- Headline -->
+                        <div class="headline">
+                            <h3><i class="icon-feather-folder-plus"></i> {{ Test.titre_test }} Test Submission For  {{ User.username }} </h3>
+                        </div>
+
+                        {{ form_start(form) }}
+                        {% for question in questions %}
+                        <div class="form-group">
+                            <label for="formGroupExampleInput"><strong> {{ loop.index }}) {{ question }} ?</strong></label>
+                            <div class="form-group row justify-content-center">
+                                <div class="col-xl-6 test-answer">
+                                    <label for="formGroupExampleInput"><strong>{{ answers[loop.index -1] }}</strong></label>
+                                </div>
+                                <div class="col-xl-2">
+                                    {{ form_widget(form.correction[loop.index-1]) }}
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                            <div class="text-center">
+
+                                {{ form_widget(form.save) }}
+                            </div>
+                            {{ form_end(form) }}
+            </div>
+            <!-- Footer / End -->
+
+        </div>
+    </div>
+    <!-- Dashboard Content / End -->
+
+    </div>
+    <!-- Dashboard Container / End -->
+
+{% endblock %}

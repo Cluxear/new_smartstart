@@ -1,0 +1,24 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}MyAppMyxBundle:Voiture:Ajout{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the Réclamation</h1>
+    {{ form_start(form) }} {#<form method= action=>#}
+    <table>
+        <tr>
+            <td>sujet</td>
+            <td>{{ form_widget(form.sujetreclamation) }}</td>
+        </tr>
+        <tr>
+            <td>Réclamation</td>
+            <td>{{ form_widget(form.descriptionreclamation) }}</td>
+        </tr>
+       <tr>
+        <td>{{ form_widget(form.save) }}</td>
+        </tr>
+    </table>
+    {{ form_end(form) }}{#</form>#}
+
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+{% block content %}
+    <body>
+    <div id="all">
+
+        <div id="content">
+            <div class="container">
+
+                <div class="col-md-12">
+
+                    <ul class="breadcrumb">
+                        <li><a href="index.html">Home</a>
+                        </li>
+                        <li>Répondre à la reclamation de {{ reclamation.idclient.username }} </li>
+                    </ul>
+
+                </div>
+
+
+                <div class="col-md-12" >
+
+
+                    <div class="well col-md-10">
+                        <h1>Répondre à la reclamation de <a href="#">{{ reclamation.idclient.username }}</a>  </h1>
+                        <p class="lead">Pellentesque habitant morbi tristique senectus et netus et malesuada fames
+                            ac turpis egestas.</p>
+
+
+                        <div >
+                            {{ form_start(form) }}
+                            Sujet: {{ form_widget(form.sujet, { 'attr': {'class': 'form-control'} }) }}
+                            Réponse: {{ form_widget(form.reponse, { 'attr': {'class': 'form-control '} }) }}
+
+                            <br>
+
+                            <input type="submit" value="Envoyer" class="btn btn-success"/>
+
+                        </div>
+                        {{ form_end(form) }}
+
+                    </div>
+
+
+                    <!-- /.products -->
+
+                </div>
+            </div>
+            <!-- /.container -->
+        </div>
+    </div>
+
+    <br>
+    <br>
+    </body>
+
+
+
+{% endblock %}

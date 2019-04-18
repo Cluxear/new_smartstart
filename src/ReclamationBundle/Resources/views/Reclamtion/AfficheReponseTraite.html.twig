@@ -1,0 +1,111 @@
+{% extends "default/PageAdmin.html.twig" %}
+{% block adminName %}
+    <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        <img src="{{ asset('asseets/images/admin1.png') }}" alt=""/>
+        {{ name }}
+        <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+        <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+        <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+        <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> Log Out</a></li>
+    </ul>
+{% endblock %}
+{% block content %}
+
+    <link href="{{ asset('asseets/css/detailReclamation.css')}}" rel="stylesheet">
+    <link href="{{ asset('asseets/css/warningBOX.css')}}" rel="stylesheet">
+
+    <body>
+
+    <div id="all">
+
+        <div id="content">
+            <div class="container">
+                <div class="col-md-12">
+
+                    <ul class="breadcrumb">
+                        <li><a href="index.html">Home</a>
+                        </li>
+                        <li>Detail de la reclamation de {{ reponse.idtraite.idagent.username }} </li>
+                    </ul>
+
+                </div>
+
+
+                <div class="well col-md-10">
+
+                    <section class="comments">
+                        <article class="comment">
+                            <a class="comment-img" href="#non">
+                                <img src="{{ asset('asseets/images/boy.png') }}" alt="" width="50" height="50">
+                            </a>
+                            <div class="comment-body">
+
+
+                                <h3> Sujet : {{ reponse.idtraite.sujet }}</h3>
+
+                                <div class="text">
+                                    <p>{{ reponse.idtraite.traite }}</p>
+                                </div>
+                                <p class="attribution">by admin <a href="#non">{{ reponse.idtraite.idadmin.username }} </a> at {{ reponse.idtraite.datetraite | date }}</p>
+                            </div>
+                        </article>
+                        {% if reponse  %}
+
+                            <article class="comment">
+                                <a class="comment-img" href="#non">
+                                    <img src="{{ asset('asseets/images/boy.png') }}" alt="" width="50" height="50">
+                                </a>
+                                <div class="comment-body">
+
+                                    <h3> Sujet : {{ reponse.sujet }}</h3>
+                                    <div class="text">
+                                        <p>Sujet : {{ reponse.reponse }}</p>
+                                    </div>
+                                    <p class="attribution">by Agent <a href="#non">{{ reponse.idtraite.idagent.username }}</a> </p>
+
+                                </div>
+                            </article>
+
+                        {% endif %}
+                    </section>
+
+
+                </div>
+
+
+
+                {% if reponse == null %}
+                    <div class="container">
+                        <div class="col-sm-10" style="    padding-right: 49px;">
+                            <div class="bs-calltoaction bs-calltoaction-warning">
+                                <div class="row">
+                                    <div class="col-md-9 cta-contents" >
+                                        <h1 class="cta-title">Vous n'avez pas répondu a cette reclamation </h1>
+                                        <div class="cta-desc">
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 cta-button">
+                                        <a href="{{ path('reponse_create',{idreclamation:reclamation.idreclamation}) }}" class="btn btn-lg btn-block btn-warning"> Répondre</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+
+            </div>
+            <!-- /.container -->
+        </div>
+    </div>
+
+    <br>
+    <br>
+    </body>
+
+
+
+{% endblock %}
